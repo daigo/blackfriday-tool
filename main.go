@@ -18,11 +18,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/russross/blackfriday"
 	"io/ioutil"
 	"os"
 	"runtime/pprof"
 	"strings"
+
+	"github.com/daigo/blackfriday"
 )
 
 const DEFAULT_TITLE = ""
@@ -56,8 +57,9 @@ func main() {
 		"Process the input multiple times (for benchmarking)")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Blackfriday Markdown Processor v"+blackfriday.VERSION+
-			"\nAvailable at http://github.com/russross/blackfriday\n\n"+
+			"\nAvailable at http://github.com/daigo/blackfriday\n\n"+
 			"Copyright © 2011 Russ Ross <russ@russross.com>\n"+
+			"Copyright © 2016 Daigo Moriwaki <daigo@debian.org>\n"+
 			"Distributed under the Simplified BSD License\n"+
 			"See website for details\n\n"+
 			"Usage:\n"+
