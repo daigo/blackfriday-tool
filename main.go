@@ -31,7 +31,7 @@ const DEFAULT_TITLE = ""
 func main() {
 	// parse command-line options
 	var page, toc, toconly, xhtml, latex, smartypants, latexdashes, fractions bool
-	var css, cpuprofile string
+	var css, cpuprofile, script string
 	var repeat int
 	flag.BoolVar(&page, "page", false,
 		"Generate a standalone HTML page (implies -latex=false)")
@@ -51,6 +51,8 @@ func main() {
 		"Use improved fraction rules for smartypants")
 	flag.StringVar(&css, "css", "",
 		"Link to a CSS stylesheet (can be a comma-separated list) (implies -page)")
+	flag.StringVar(&script, "script", "",
+		"Link to a script (can be a comma-separated list) (implies -page)")
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
 	flag.IntVar(&repeat, "repeat", 1,
@@ -72,6 +74,9 @@ func main() {
 
 	// enforce implied options
 	if css != "" {
+		page = true
+	}
+	if script != "" {
 		page = true
 	}
 	if page {
@@ -153,7 +158,7 @@ func main() {
 		if toc {
 			htmlFlags |= blackfriday.HTML_TOC
 		}
-		renderer = blackfriday.HtmlRenderer(htmlFlags, title, css)
+		renderer = blackfriday.HtmlRenderer(htmlFlags, title, css, script)
 	}
 
 	// parse and render
