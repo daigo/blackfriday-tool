@@ -6,6 +6,13 @@
 
 `-script` can embed `script` tags in the header.
 
+### Set up cross compile
+
+Build binaries in Docker containers
+
+    % make build         // linux
+    % make all-build-os  // linux, darwin, windows
+
 ## 2016-09-08
 
 - Initial version.
