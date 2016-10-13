@@ -50,7 +50,7 @@ func main() {
 	flag.BoolVar(&fractions, "fractions", true,
 		"Use improved fraction rules for smartypants")
 	flag.StringVar(&css, "css", "",
-		"Link to a CSS stylesheet (implies -page)")
+		"Link to a CSS stylesheet (can be a comma-separated list) (implies -page)")
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
 	flag.IntVar(&repeat, "repeat", 1,
